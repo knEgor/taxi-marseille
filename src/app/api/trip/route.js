@@ -14,10 +14,18 @@ export async function GET(request) {
 }
 
 export async function POST(request) {
-    // Example: create a new trip
+    // Create a new trip with random price, current time, and status 'pending'
     const data = await request.json();
-    // In a real app, you'd save this to a database
-    return new Response(JSON.stringify({ message: 'Trip created', trip: data, time: new Date().toISOString() }), {
+    const newTrip = {
+        id: Date.now(),
+        from: data.from,
+        to: data.to,
+        status: 'pending',
+        price: Math.floor(Math.random() * 200) + 50, // random price 50-249
+        timestamp: Date.now()
+    };
+    trips.push(newTrip);
+    return new Response(JSON.stringify({ message: 'Trip created', trip: newTrip, time: new Date().toISOString() }), {
         status: 201,
         headers: { 'Content-Type': 'application/json' },
     });
