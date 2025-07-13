@@ -3,6 +3,7 @@ import "./globals.css";
 import { Button, ButtonGroup } from "@chakra-ui/react"
 import { Provider } from "@/components/ui/provider"
 import { Box, Flex } from "@chakra-ui/react";
+import Link from 'next/link'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,8 +30,43 @@ export default function RootLayout({ children }) {
               Taxi Marseille
             </Box>
             <ButtonGroup spacing={4}>
-              <Button colorScheme="teal">Замовити таксі</Button>
-              <Button variant="outline" colorScheme="teal">Список поїздок</Button>
+              <Link prefetch={false} href="/" passHref style={{ textDecoration: 'none' }}>
+                <Box
+                  as="span"
+                  px={4}
+                  py={2}
+                  borderRadius="md"
+                  bg="teal.500"
+                  color="white"
+                  fontWeight="semibold"
+                  boxShadow="sm"
+                  _hover={{ bg: 'teal.600', textDecoration: 'none' }}
+                  transition="background 0.2s"
+                  cursor="pointer"
+                  mr={2}
+                >
+                  Замовити таксі
+                </Box>
+              </Link>
+              <Link prefetch={false} href="/trip-list" passHref style={{ textDecoration: 'none' }}>
+                <Box
+                  as="span"
+                  px={4}
+                  py={2}
+                  borderRadius="md"
+                  bg="white"
+                  color="teal.600"
+                  fontWeight="semibold"
+                  border="2px solid"
+                  borderColor="teal.500"
+                  boxShadow="sm"
+                  _hover={{ bg: 'gray.100', textDecoration: 'none' }}
+                  transition="background 0.2s"
+                  cursor="pointer"
+                >
+                  Список поїздок
+                </Box>
+              </Link>
             </ButtonGroup>
           </Flex>
         </Box>
