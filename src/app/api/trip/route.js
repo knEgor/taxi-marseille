@@ -17,7 +17,7 @@ export async function POST(request) {
     // Create a new trip with random price, current time, and status 'pending'
     const data = await request.json();
     const newTrip = {
-        id: Date.now(),
+        id: crypto.randomUUID(),
         from: data.from,
         to: data.to,
         status: 'pending',
